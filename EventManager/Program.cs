@@ -29,46 +29,6 @@ class GameEventArgs : EventArgs
     }
 }
 
-static class EventManager
-{
-    static public event EventHandler<GameEventArgs> OnGameEvent;
-
-    static public void TriggerEvent(string eventName,object data = null)
-    {
-        OnGameEvent?.Invoke(null, new GameEventArgs(eventName, data));
-    }
-}
-
-class SoundSystem
-{
-    public void Achievement(object sender, GameEventArgs e)
-    {
-        Console.WriteLine($"[Sound] 이벤트: {e.EventName}");
-    }
-}
-
-class ScoreSystem
-{
-    public void ScoreChanged(object sender, GameEventArgs e)
-    {
-        if (e.Data is int i)
-        {
-            Console.WriteLine($"점수변경: {i}점");
-        }
-    }
-}
-
-class AchievementSystem
-{
-    public void Achievement(object sender, GameEventArgs e)
-    {
-        if (e.Data is string s)
-        {
-            Console.WriteLine($"업적달성: {s}점");
-        }
-    }
-}
-
 
 
 
